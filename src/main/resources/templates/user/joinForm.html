@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="fragments/header :: header"></th:block>
-    <link rel="stylesheet" href="/blog/css/user.css">
+    <link rel="stylesheet" href="/css/user.css">
 </head>
 <body>
     <header th:replace="fragments/bodyHeader :: bodyHeader"/>
     <section id="user-joinForm">
         <div class = "container">
-            <form role="form" method="POST" th:object="${form}">
+            <form th:object="${form}">
                 <div class = "user-joinForm-container">
                     <div class="mb-3 form-group">
                         <label th:for="username" class="form-label">Username</label>
@@ -33,13 +33,15 @@
 
                     </div>
                 </div>
-                <div class="user-joinForm-button">
-                    <button type="submit" class="btn btn-primary">가입하기</button>
-                </div>
             </form>
+            <div class="user-joinForm-button">
+                <button id="button-save" class="btn btn-primary">가입하기</button>
+            </div>
         </div>
     </section>
 
     <footer th:replace="fragments/footer :: footer"/>
+
+    <script src="/js/user.js"></script>
 </body>
 </html>

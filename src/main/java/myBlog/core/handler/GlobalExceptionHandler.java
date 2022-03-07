@@ -1,5 +1,7 @@
 package myBlog.core.handler;
 
+import myBlog.core.dto.ResponseDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GlobalExceptionHandler {
 
-    // http://localhost:8000/blog/dummy/exception
     @ExceptionHandler(value = Exception.class)
-    public String ExceptionHandler(Exception e){
-        return "<h1>" + e.getMessage() + "</h1>";
+    public ResponseDto<String> handleArgumentException(Exception e){
+
+        System.out.println("GlobalExceptionHandler:error: " + e.getMessage());
+
+        return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value() , e.getMessage());
     }
 }

@@ -2,31 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="fragments/header :: header"></th:block>
-    <link rel="stylesheet" href="/blog/css/user.css">
+    <link rel="stylesheet" href="/css/user.css">
 </head>
 <body>
     <header th:replace="fragments/bodyHeader :: bodyHeader"/>
     <section id="login-form">
         <div class = "login-form-container container">
-            <form role="form" th:object="${form}">
+            <form role="form" , method="POST" , action="#">
                 <div class="mb-3 form-group">
-                    <label th:for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" th:field="*{email}" aria-describedby="emailHelp">
+                    <label for ="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email"  aria-describedby="emailHelp">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3 form-group">
-                    <label th:for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" th:field="*{password}">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password">
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Remember me</label>
                 </div>
-                <button type="submit" class="btn btn-primary">로그인</button>
+                <button id="button-login" class="btn btn-primary">로그인</button>
             </form>
         </div>
     </section>
     <footer th:replace="fragments/footer :: footer"/>
-
+<!--    <script src="/js/user.js"></script>-->
 </body>
 </html>

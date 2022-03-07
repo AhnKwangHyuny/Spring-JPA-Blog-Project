@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import myBlog.core.web.UpdateUserRequestDTO;
+import myBlog.core.web.UserJoinForm;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
@@ -59,6 +60,15 @@ public class User extends BaseEntity{
         this.setPassword(updateUserRequestDTO.getPassword());
 
         return this;
+    }
+
+    public static User create(UserJoinForm userJoinForm){
+        User user = new User();
+        user.setUsername(userJoinForm.getUsername());
+        user.setEmail(userJoinForm.getEmail());
+        user.setPassword(userJoinForm.getPassword());
+
+        return user;
     }
 
     @Override
