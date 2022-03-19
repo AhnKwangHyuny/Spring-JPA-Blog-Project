@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <!-- session.principal(user entity)가 Null이면 로그인 , 회원가입 링크 표시-->
-                    <th:block th:if="${#authentication.principal == null}">
+                    <th:block sec:authorize="!isAuthenticated()" >
                         <li class="nav-item">
                             <a class="nav-link" href="/auth/login">로그인</a>
                         </li>
@@ -19,9 +19,9 @@
                         </li>
                     </th:block>
 
-                    <th:block th:unless="${#authentication.principal == null}">
+                    <th:block sec:authorize="isAuthenticated()">
                         <li class="nav-item">
-                            <a class="nav-link" href="/board">글쓰기</a>
+                            <a class="nav-link" href="/boards/save">글쓰기</a>
                         </li>
 
                         <li class="nav-item">

@@ -14,6 +14,11 @@ import java.util.List;
 @Entity
 public class Board extends BaseEntity{
 
+    public Board(String content , String title){
+        this.content = content;
+        this.title = title;
+    }
+
     @Column(name = "board_id")
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) // @GeneratedValue : numbering 전략 -> 프로젝트에서 연결된 DB의 넘버링 전략을 따라간다.
     private Long boardId; // oracle : sequence , mySql : auto_increment
@@ -31,9 +36,7 @@ public class Board extends BaseEntity{
     @Lob // 대용량 데이터
     private String content; // 섬머노트 라이브러리 <html>태그가 섞여서 디자인
 
-    @ColumnDefault("0")
     private int count; // 조회수
-
 
 
     //== 연관관계 메소드 ==//

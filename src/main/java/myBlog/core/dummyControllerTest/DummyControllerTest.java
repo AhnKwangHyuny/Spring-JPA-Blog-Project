@@ -4,6 +4,7 @@ import myBlog.core.web.UpdateUserRequestDTO;
 import myBlog.core.Domain.User;
 import myBlog.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -77,8 +78,8 @@ public class DummyControllerTest {
     // paging test
     // paging strategy : 2건씩 아이디를 기준으로 내림차순
     @GetMapping(value = "/dummy/user/page")
-    public List<User> pageList(@PageableDefault(size = 2 , sort = "userId" , direction = Sort.Direction.DESC)Pageable pageable){
-        List<User> users = userRepository.findAll(pageable).getContent();
+    public Page<User> pageList(@PageableDefault(size = 2 , sort = "userId" , direction = Sort.Direction.DESC)Pageable pageable){
+        Page<User> users = userRepository.findAll(pageable);
         return users;
     }
 

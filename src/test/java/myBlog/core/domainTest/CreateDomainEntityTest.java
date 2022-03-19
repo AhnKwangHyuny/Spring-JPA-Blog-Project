@@ -3,6 +3,7 @@ package myBlog.core.domainTest;
 import myBlog.core.Domain.Board;
 import myBlog.core.Domain.Role;
 import myBlog.core.Domain.User;
+import myBlog.core.repository.UserRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 public class CreateDomainEntityTest {
 
     @PersistenceContext EntityManager em;
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
     @Transactional
@@ -32,7 +35,7 @@ public class CreateDomainEntityTest {
         //when
         em.persist(user);
         //then
-        User findUser = em.find(User.class, user.getUserId());
+        User findUser = userRepository.findByEmail(user.getEmail()).get();
         System.out.println("findUser.getUserId() = " + findUser.getUserId());
    }
 
@@ -59,4 +62,6 @@ public class CreateDomainEntityTest {
        Assertions.assertThat(board1.getBoardId()).isEqualTo(board.getBoardId());
 
     }
+
+
 }

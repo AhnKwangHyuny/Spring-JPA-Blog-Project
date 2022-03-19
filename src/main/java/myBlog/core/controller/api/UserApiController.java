@@ -28,7 +28,7 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/auth/join")
+    @PostMapping(value="/auth/join")
     public ResponseDto<Integer> save(@RequestBody @Valid UserJoinForm userJoinForm) {
         System.out.println("UserApiController: save 호출됨");
         userService.join(User.create(userJoinForm));

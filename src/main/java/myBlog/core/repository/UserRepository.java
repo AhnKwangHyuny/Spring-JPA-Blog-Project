@@ -4,11 +4,13 @@ import myBlog.core.Domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Optional;
+
 // DAO
 // 자동으로 bean 동록이 된다.
 // @Repository 생략 가능
 public interface UserRepository extends JpaRepository<User, Long> {
-
+    Optional<User> findByEmail(String email);
 }
 
 //jpa naming strategy
@@ -18,3 +20,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 // native query 사용가능
 //    @Query(value="select * from User where username = ? and password = ?" , nativeQuery = true)
 //    User login(String email , String password);
+
+

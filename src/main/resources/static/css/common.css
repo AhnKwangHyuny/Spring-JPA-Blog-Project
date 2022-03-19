@@ -1,0 +1,11 @@
+#board-saveForm , #user-joinForm , #login-form {
+    margin-top : 80px;
+}
+
+section {
+    min-height : 80vh;
+}
+
+.mt-80 {
+    margin-top : 80px;
+}

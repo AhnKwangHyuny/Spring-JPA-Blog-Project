@@ -1,11 +1,13 @@
 package myBlog.core.Domain;
 
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.MappedSuperclass;
 import java.sql.Timestamp;
 
 @MappedSuperclass
+@Data
 public abstract class BaseEntity {
 
     @CreationTimestamp // 시간이 자동입력됨

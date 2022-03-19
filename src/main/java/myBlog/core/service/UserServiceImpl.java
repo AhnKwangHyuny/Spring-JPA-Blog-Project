@@ -4,6 +4,7 @@ import myBlog.core.Domain.User;
 import myBlog.core.repository.UserRepository;
 import myBlog.core.web.LoginForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,8 +15,18 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     @Transactional
     public void join(User user){
+        String rawPassword = user.getPassword();
+        String encPassword = encoder.encode(rawPassword); // 해쉬화
+
+        user.setPassword(encPassword);
+
+        System.out.println("encPassword = " + encPassword);
+        
         userRepository.save(user);
     }
 

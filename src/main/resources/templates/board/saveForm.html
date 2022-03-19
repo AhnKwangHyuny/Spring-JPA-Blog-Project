@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="fragments/header :: header"></th:block>
+    <link rel="stylesheet" href="/css/boardPage.css"/>
+    <script type="text/javascript" src="/js/board.js"></script>
+</head>
+<body>
+    <header th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <section id="board-saveForm">
+        <div class = "container">
+            <form>
+
+                <div class = "principal-id-container">
+                    <input type="hidden" id="userId" name="user_id" th:value="${userId}"/>
+                </div>
+
+                <div class="mb-3 form-group">
+                    <input type="text" name="title" class="form-control board-title"
+                           id="title"  aria-describedby="emailHelp" placeholder="제목을 입력하시오">
+                </div>
+
+                <textarea id="summernote" name="editordata"></textarea>
+            </form>
+
+            <div class="user-joinForm-button btn-board-save">
+                <button id="button-board-save" class="btn pull-right btn-dark mt-2" disabled>글 등록</button>
+            </div>
+        </div>
+    </section>
+    <footer th:replace="fragments/footer :: footer"/>
+</body>
+</html>

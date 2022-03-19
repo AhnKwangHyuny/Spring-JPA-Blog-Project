@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="fragments/header :: header"></th:block>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="/images/assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/boardPage.css" />
+</head>
+<body>
+    <header th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <section id="board-detail">
+
+        <!--writer info-->
+        <div class = "userInfo">
+            <input type="hidden" name="userId" id="userId" th:value="${board.getUser().getUserId()}">
+        </div>
+
+        <!-- Page Header-->
+        <div class="masthead mt-80">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1 th:text="${board.title}">Man must explore, and this is exploration at its greatest</h1>
+                            <h2 class="subheading" th:text="${board.getCount()}">viewCount : </h2>
+                            <span class="meta">
+                                Posted by
+                                <a th:href="@{/users/{id} (id = ${board.getUser().getUserId()})}" th:text="${board.getUser().getUsername()}">Start Bootstrap</a>
+                                <th:bock th:text="${board.getCreatedDate()}"> on August 24, 2021 </th:bock>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7" th:utext="${board.content}">
+                       board content
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- update , delete button -->
+        <th:block th:if="${principal.userId == board.getUser().getUserId()}">
+            <div class = "detail-button-container container">
+                <div class="board-update-button-container">
+                    <button id="btn-board-updateForm" class="btn btn-success" type="button"
+                            th:onclick="|location.href='@{/boards/{boardId}/update (boardId = ${board.getBoardId()})}'|">수정하기</button>
+                </div>
+
+                <div class="board-delete-button-container">
+                    <button id="board-delete-button" class="btn btn-danger">삭제하기</button>
+                </div>
+            </div>
+        </th:block>
+
+    </section>
+
+    <footer th:replace="fragments/footer :: footer"/>
+</body>
+</html>

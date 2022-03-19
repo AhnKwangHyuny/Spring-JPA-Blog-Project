@@ -1,0 +1,26 @@
+body {
+    margin : 0;
+}
+
+nav a {
+    text-decoration : none;
+    color : black;
+    margin: 2em;
+
+}
+
+nav {
+    display : flex;
+    justify-content : center ;
+}
+
+#horizontal-underline {
+    position : absolute;
+    width : 0;
+    top:0;
+    left:0;
+    background-color : pink;
+    height : 4px;
+    transition : 0.5s;
+    border-radius : 3px;
+}

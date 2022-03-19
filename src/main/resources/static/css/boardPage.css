@@ -2,3 +2,18 @@
     margin-top : 90px;
 
 }
+
+.board-title {
+    border : 2px solid black;
+}
+
+.btn-board-save {
+    display : flex;
+    flex-direction : row-reverse;
+
+}
+
+.detail-button-container {
+    display : flex;
+    justify-content: center;
+}

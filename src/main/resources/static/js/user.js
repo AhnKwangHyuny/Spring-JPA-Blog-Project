@@ -21,16 +21,16 @@ let index = {
             data : JSON.stringify(newUserData), // data format -> json
             processData: false,
             contentType: "application/json; charset=utf-8", // http body data 형식
-            dataType: "json" // 요청을 서버로 보내 응답이 왔을 때 받을 data 형식 (default형식은 string) //
         }).done(function(res){ // javscript object로 변환하여 res에 담아줌
 
             console.log(res);
             alert("회원가입이 완료되었습니다.");
-            location.href="/blog";
+            location.href="/";
 
-        }).fail(function(){
+        }).fail(function(error){
+            console.log(error);
             alert("회원가입에 실패했습니다.");
-            location.href="/user/join";
+//            location.href="/auth/join";
         });
     }
 };
