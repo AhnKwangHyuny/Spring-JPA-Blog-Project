@@ -9,3 +9,25 @@ section {
 .mt-80 {
     margin-top : 80px;
 }
+
+.mt-150 {
+    margin-top : 150px;
+}
+
+.ma-20 {
+    margin : 20px;
+}
+
+.ml-10 {
+    margin-left : 10px;
+}
+
+.errorMessage {
+    margin: 8px 0px;
+    padding: 5px 3px 5px 15px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+
+    color: #D8000C;
+    background-color: #FFBABA;
+}

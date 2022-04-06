@@ -1,0 +1,15 @@
+
+// userInfo 에서 user profile image 수정 section css 정의
+.user_profile_image_container {
+    display : flex;
+    flex-direction : column;
+    padding : 10px;
+}
+
+.user_profile_image {
+    height : 180px;
+    width : 180px;
+    border : 1px solid;
+    border-radius : 50%;
+}
+
